@@ -8,4 +8,3 @@ langchain-community
 google-generativeai
 huggingface
 chromadb
-sqlite3
