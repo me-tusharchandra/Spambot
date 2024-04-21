@@ -8,4 +8,4 @@ langchain_community
 google-generativeai
 huggingface
 chromadb
-pysqlite3-binary
+pysqlite3
