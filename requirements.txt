@@ -4,7 +4,7 @@ google
 sentence-transformers
 transformers
 langchain
-pip install -U langchain_community
+langchain_community
 google-generativeai
 huggingface
 chromadb
