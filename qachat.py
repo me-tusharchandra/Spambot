@@ -11,7 +11,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
 from transformers import pipeline
 
-genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+genai.configure(api_key="AIzaSyC6pjCSuzeSdm8jMB6O0JHahEtkPzlc5pc")
 
 # Load the text file
 loader = TextLoader("transcript.txt")
