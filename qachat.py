@@ -17,6 +17,11 @@ from langchain_community.document_loaders import TextLoader
 
 genai.configure(api_key="AIzaSyC6pjCSuzeSdm8jMB6O0JHahEtkPzlc5pc")
 
+import warnings
+
+# Suppress all warnings
+warnings.filterwarnings("ignore")
+
 # Load the text file
 loader = TextLoader("transcript.txt")
 documents = loader.load()
