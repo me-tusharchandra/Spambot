@@ -8,5 +8,3 @@ langchain_community
 google-generativeai
 huggingface
 chromadb
-pypika
-pysqlite3
