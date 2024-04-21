@@ -3,13 +3,13 @@ load_dotenv()
 
 import os
 import streamlit as st
+from transformers import pipeline
 import google.generativeai as genai
 from langchain_community.vectorstores import Chroma
 from sentence_transformers import SentenceTransformer
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
-from transformers import pipeline
 
 genai.configure(api_key="AIzaSyC6pjCSuzeSdm8jMB6O0JHahEtkPzlc5pc")
 
