@@ -9,3 +9,4 @@ google-generativeai
 huggingface
 chromadb
 pysqlite3
+
