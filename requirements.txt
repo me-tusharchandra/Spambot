@@ -9,4 +9,4 @@ google-generativeai
 huggingface
 chromadb
 pypika
-pysqlite3
+pysqlite3==version
