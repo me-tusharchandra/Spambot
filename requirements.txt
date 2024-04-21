@@ -6,3 +6,4 @@ transformers
 langchain
 langchain-community
 google-generativeai
+huggingface
