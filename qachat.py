@@ -8,14 +8,11 @@ sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import os
 import streamlit as st
 from transformers import pipeline
-import google.generativeai as genai
 from langchain_community.vectorstores import Chroma
 from sentence_transformers import SentenceTransformer
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.document_loaders import TextLoader
-
-genai.configure(api_key="AIzaSyC6pjCSuzeSdm8jMB6O0JHahEtkPzlc5pc")
 
 import warnings
 
@@ -26,14 +23,6 @@ warnings.filterwarnings("ignore")
 loader = TextLoader("transcript.txt")
 documents = loader.load()
 
-# Initialize the summarization pipeline
-summarizer = pipeline("summarization")
-
-# Function to summarize the transcript
-def summarize_transcript(transcript, max_length=150):
-    summary = summarizer(transcript, max_length=max_length, min_length=50, do_sample=False)
-    return summary[0]['summary_text']
-
 # Split the text into smaller chunks
 text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 texts = text_splitter.split_documents(documents)
@@ -42,21 +31,19 @@ texts = text_splitter.split_documents(documents)
 embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vectorstore = Chroma.from_documents(texts, embeddings)
 
-# Initialize the LLM
-model = genai.GenerativeModel("gemini-pro")
-chat = model.start_chat(history=[])
+# Initialize the summarization and Q&A pipelines
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+qa_pipeline = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
 
-def get_gemini_response(question):
-    # Retrieve relevant information from the text data
-    docs = vectorstore.similarity_search(question, k=3)
-    
-    # Combine the relevant information
-    context = "\n".join([doc.page_content for doc in docs])
-    
-    # Generate a response based on the context
-    response = chat.send_message(f"Generate responses to user queries based on the provided text, which contains a detailed account of daily activities. Responses should be: 1. Derived strictly from the information in the given text. 2. Relevant and accurate. 3. Polite, with a tone of helpfulness and friendliness. In a situation where you cannot provide an answer, consider responding with the following suggestions: - 'Please provide more context.' - 'You may want to try summarization if some information seems missing.' Confidence: 90%\n\nQuestion: {question}\n\nContext:\n{context}")
-    
-    return response
+def summarize_transcript(transcript, max_length=150):
+    prompt = f"Summarize the following text with a maximum length of {max_length} characters:\n\n{transcript}"
+    summary = summarizer(prompt, max_length=max_length, min_length=50, do_sample=False)
+    return summary[0]['summary_text']
+
+def get_qa_response(question, context):
+    prompt = f"Generate a response to the question based on the provided context. The response should be derived strictly from the information in the given text, be relevant and accurate, and maintain a tone of helpfulness and friendliness.\n\nQuestion: {question}\n\nContext:\n{context}"
+    result = qa_pipeline(question=question, context=context)
+    return result['answer']
 
 # Streamlit app
 st.set_page_config(page_title="Q&A Demo")
@@ -70,14 +57,24 @@ option = st.selectbox("Select mode:", ["Q&A", "Summarization"])
 if option == "Q&A":
     input = st.text_input("Input: ", key="input")
     submit = st.button("Ask the question")
+    clear_chat = st.button("Clear Chat")
+
+    if clear_chat:
+        st.session_state['chat_history'] = []
 
     if submit and input:
-        response = get_gemini_response(input)
+        # Retrieve relevant information from the text data
+        docs = vectorstore.similarity_search(input, k=3)
+        
+        # Combine the relevant information
+        context = "\n".join([doc.page_content for doc in docs])
+        
+        # Get the response from the Q&A pipeline
+        response = get_qa_response(input, context)
         st.session_state['chat_history'].append(("You", input))
         st.subheader("The Response is")
-        for chunk in response:
-            st.write(chunk.text)
-            st.session_state['chat_history'].append(("Bot", chunk.text))
+        st.write(response)
+        st.session_state['chat_history'].append(("Bot", response))
 
 elif option == "Summarization":
     if documents:
