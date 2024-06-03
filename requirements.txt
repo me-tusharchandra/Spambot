@@ -1,8 +1,8 @@
 # This file may be used to create an environment using:
 # $ conda create --name <env> --file <this file>
 # platform: osx-64
-aiohttp=3.9.5=py311h6c40b1e_0
-aiosignal=1.2.0=pyhd3eb1b0_0
+# aiohttp=3.9.5=py311h6c40b1e_0
+# aiosignal=1.2.0=pyhd3eb1b0_0
 altair=5.3.0=pypi_0
 annotated-types=0.6.0=py311hecd8cb5_0
 anyio=4.2.0=py311hecd8cb5_0
