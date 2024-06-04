@@ -64,7 +64,18 @@ def extract_text_from_response(response):
 # Streamlit app
 st.set_page_config(page_title="Q&A Demo")
 st.header("SpamBot: Your everyday assistant!")
-st.write("Welcome to SpamBot! This AI assistant is designed to help you with your queries and provide summaries of your day-to-day activies given in text (transcipt.txt). You can choose between two modes: Q&A and Summarization.")
+st.write("Welcome to SpamBot! This AI assistant is designed to help you with your queries and provide summaries of your day-to-day activities given in text (transcript.txt). You can choose between two modes: Q&A and Summarization.")
+st.write("---")
+st.write("Current transcript:")
+st.write("Today I have the following tasks to complete:")
+st.write("- Go for a walk with my dog.")
+st.write("- Get some groceries.")
+
+st.write("Total 13 teams are participating in today's hackathon.")
+
+st.write("GenAi Hackathon is being conducted at the Rishihood University in Sonipat. The prize pool is 1 Lakh rupees.")
+st.write("---")
+st.write("Since the model is grounded, please ask questions strictly from the transcript.txt or consider modifying the text as per your needs.")
 
 if 'chat_history' not in st.session_state:
     st.session_state['chat_history'] = []
