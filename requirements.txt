@@ -31,7 +31,7 @@ comm==0.1.4
 contourpy==1.0.7
 cycler==0.11.0
 dataclasses-json==0.6.4
-# debugpy==1.6.7.post1
+debugpy==1.6.7.post1
 decorator==5.1.1
 defusedxml==0.7.1
 distro==1.8.0
@@ -207,7 +207,7 @@ Send2Trash==1.8.2
 sentence-transformers==2.7.0
 setuptools==58.0.4
 six==1.15.0
-# sklearn==0.0.post7
+sklearn==0.0.post7
 smmap==5.0.1
 sniffio==1.3.0
 soupsieve==2.4.1
