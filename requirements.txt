@@ -2,6 +2,7 @@ absl-py==2.1.0
 aiohttp==3.9.3
 aiosignal==1.3.1
 altair==5.3.0
+altgraph==0.17.2
 annotated-types==0.6.0
 anyio==3.6.2
 appnope==0.1.3
@@ -30,7 +31,7 @@ comm==0.1.4
 contourpy==1.0.7
 cycler==0.11.0
 dataclasses-json==0.6.4
-debugpy==1.6.7.post1
+# debugpy==1.6.7.post1
 decorator==5.1.1
 defusedxml==0.7.1
 distro==1.8.0
@@ -46,6 +47,7 @@ fonttools==4.38.0
 fqdn==1.5.1
 frozenlist==1.4.1
 fsspec==2024.3.1
+future==0.18.2
 gap-stat==2.0.3
 gast==0.5.4
 gitdb==4.0.11
@@ -87,17 +89,17 @@ jsonpointer==2.4
 jsonschema==4.19.0
 jsonschema-specifications==2023.7.1
 jupyter==1.0.0
+jupyter_client==8.3.0
 jupyter-console==6.6.3
+jupyter_core==5.3.1
 jupyter-events==0.7.0
 jupyter-lsp==2.2.0
-jupyter_client==8.3.0
-jupyter_core==5.3.1
 jupyter_server==2.7.1
 jupyter_server_terminals==0.4.4
 jupyterlab==4.0.5
 jupyterlab-pygments==0.2.2
-jupyterlab-widgets==3.0.8
 jupyterlab_server==2.24.0
+jupyterlab-widgets==3.0.8
 keras==2.15.0
 kiwisolver==1.4.4
 langchain==0.1.5
@@ -108,6 +110,7 @@ langsmith==0.0.87
 libclang==16.0.6
 littleutils==0.2.2
 lxml==5.1.0
+macholib==1.15.2
 Markdown==3.5.2
 markdown-it-py==3.0.0
 MarkupSafe==2.1.3
@@ -152,6 +155,7 @@ pexpect==4.8.0
 pickleshare==0.7.5
 Pillow==9.4.0
 pingouin==0.5.3
+pip==24.0
 pipreqs==0.5.0
 platformdirs==3.10.0
 plotly==5.18.0
@@ -201,7 +205,9 @@ scripts==2.0
 seaborn==0.12.2
 Send2Trash==1.8.2
 sentence-transformers==2.7.0
-sklearn==0.0.post7
+setuptools==58.0.4
+six==1.15.0
+# sklearn==0.0.post7
 smmap==5.0.1
 sniffio==1.3.0
 soupsieve==2.4.1
@@ -232,8 +238,8 @@ tqdm==4.66.1
 traitlets==5.9.0
 transformers==4.41.1
 tweepy==4.14.0
-typing-inspect==0.9.0
 typing_extensions==4.11.0
+typing-inspect==0.9.0
 tzdata==2023.3
 uri-template==1.3.0
 uritemplate==4.1.1
@@ -243,6 +249,7 @@ webcolors==1.13
 webencodings==0.5.1
 websocket-client==1.6.1
 Werkzeug==3.0.1
+wheel==0.37.0
 widgetsnbextension==4.0.8
 wordcloud==1.9.3
 wrapt==1.14.1
