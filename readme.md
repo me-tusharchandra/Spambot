@@ -39,3 +39,9 @@ SpamBot is a standalone application that takes a `transcript.txt` file as input,
 - Add more functionalities like speech-to-text conversion and text-to-speech synthesis.
 
 Let's make your daily activities more manageable with SpamBot! 🌟
+
+### Created by Team SpamBots with ❤️:
+- [Janesh Kapoor (Team Lead)](janesh21466@iiitd.ac.in)
+- [Divyam Khorwal](divyam21388@iiitd.ac.in)
+- [Tushar Chandra](sde.tusharchandra@gmail.com)
+- [Varsha Bhaskar](varsha21499@iiitd.ac.in)
